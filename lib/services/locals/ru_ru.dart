@@ -1,4 +1,6 @@
 // Russian Translations
+import 'package:get/get.dart';
+
 const Map<String, String> ruRU = {
   //other project
   'enter_mobile': 'Введите номер \nмобильного телефона',
@@ -98,4 +100,14 @@ const Map<String, String> ruRU = {
   "Sunday": 'Воскресенье',
   "place": "Место",
   'man' : "человек",
+  'my_order' : "Мой заказ",
+  'your_booking' : "Ваше бронирование",
+  'date_time' : "Дата время",
+  "number_people" : "Число люде",
+  'send_massage_teahouse' : "Отправить сообщение в чайхану",
+  'full_fill' : "Пожалуйста, заполните",
+  'name' : "имя",
+  "phone_number_user" : "номер телефона",
+
+
 };

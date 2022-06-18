@@ -88,5 +88,13 @@ const Map<String, String> uzUZ = {
   "Sunday": 'Yakshanba',
   "place": "Joy",
   'man' : "kishi",
+  'my_order' : "Mening buyurtmam",
+  'your_booking' : "Sizning buyurtmangiz",
+  'date_time' : "Sana va vaqt",
+  "number_people" : "Odamlar soni",
+  'send_massage_teahouse' : "Choyxonaga xabar yuboring",
+  'full_fill' : "Iltimos to'ldiring",
+  'name' : "ism",
+  "phone_number_user" : "telefon nomer",
 
 };

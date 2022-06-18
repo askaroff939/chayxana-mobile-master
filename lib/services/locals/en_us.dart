@@ -108,4 +108,13 @@ const Map<String, String> enUS = {
   "Sunday": 'Sunday',
   "place": "Place",
   'man' : "man",
+  'my_order' : "My order",
+  'your_booking' : "Your booking",
+  'date_time' : "Date time",
+  "number_people" : "Number of people",
+  'send_massage_teahouse' : "Send a message to the teahouse",
+  'full_fill' : "Please full fill",
+  'name' : "name",
+  "phone_number_user" : "phone number",
+
 };

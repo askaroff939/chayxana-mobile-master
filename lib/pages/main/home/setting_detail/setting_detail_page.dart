@@ -203,7 +203,7 @@ class SettingDetailPage extends StatelessWidget {
                                   ),
                                 ),
                                 backgroundColor: MaterialStateProperty.all(
-                                    AppColors.btnColor)),
+                                    AppColors.btnColor),),
                             onPressed: () {
                               clean(controller, context);
                             },
