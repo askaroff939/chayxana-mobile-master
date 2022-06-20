@@ -1,12 +1,17 @@
 import 'dart:convert';
-MyPutClass myPutClassFromJson(String str) => MyPutClass.fromJson(json.decode(str));
+
+MyPutClass myPutClassFromJson(String str) =>
+    MyPutClass.fromJson(json.decode(str));
+
 String myPutClassToJson(MyPutClass data) => json.encode(data.toJson());
+
 class MyPutClass {
   MyPutClass({
-      this.success, 
-      this.message, 
-      this.object, 
-      this.totalElements,});
+    this.success,
+    this.message,
+    this.object,
+    this.totalElements,
+  });
 
   MyPutClass.fromJson(dynamic json) {
     success = json['success'];
@@ -19,19 +24,25 @@ class MyPutClass {
     }
     totalElements = json['totalElements'];
   }
+
   bool? success;
   String? message;
   List<Object>? object;
   int? totalElements;
-MyPutClass copyWith({  bool? success,
-  String? message,
-  List<Object>? object,
-  int? totalElements,
-}) => MyPutClass(  success: success ?? this.success,
-  message: message ?? this.message,
-  object: object ?? this.object,
-  totalElements: totalElements ?? this.totalElements,
-);
+
+  MyPutClass copyWith({
+    bool? success,
+    String? message,
+    List<Object>? object,
+    int? totalElements,
+  }) =>
+      MyPutClass(
+        success: success ?? this.success,
+        message: message ?? this.message,
+        object: object ?? this.object,
+        totalElements: totalElements ?? this.totalElements,
+      );
+
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['success'] = success;
