@@ -78,7 +78,7 @@ const Map<String, String> ruRU = {
   'booking_caution_mark':
       "мера административного наказания,\n выраженная в официальном порицании",
 
-  'January': "January",
+  'January': "Январь",
   'February': "Февраль",
   'March': "Март",
   'April': "Апрель",

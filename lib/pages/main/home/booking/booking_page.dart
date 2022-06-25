@@ -2,13 +2,15 @@ import 'package:chayxana/pages/main/home/booking/booking_controller.dart';
 import 'package:chayxana/services/const_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
+import '../../../auth/auth_controller.dart';
 import '../setting_detail/setting_detail_controller.dart';
 
 class BookingPage extends StatelessWidget {
-  bool _isTest1=true;
-  bool _isTest2=false;
+  bool _isTest1 = true;
+  bool _isTest2 = false;
 
   SettingDetailController homeController = Get.find<SettingDetailController>();
   static const String id = "/booking_page";
@@ -107,11 +109,9 @@ class BookingPage extends StatelessWidget {
                       children: [
                         // #name  #number
                         Container(
-                          // padding: const EdgeInsets.only(top: 10, bottom: 10),
                           decoration: const BoxDecoration(
                             border: Border(
                               bottom: BorderSide(
-                                // style: BorderStyle.solid,
                                 width: 1,
                                 color: Color(0xffB3B3B3),
                               ),
@@ -122,7 +122,7 @@ class BookingPage extends StatelessWidget {
                               // #name Muhammad
                               Expanded(
                                 child: TextFormField(
-                                  textAlignVertical: TextAlignVertical.center,
+                                  textAlignVertical: TextAlignVertical.top,
                                   decoration: InputDecoration(
                                       border: InputBorder.none,
                                       contentPadding:
@@ -144,23 +144,26 @@ class BookingPage extends StatelessWidget {
                                 width: 10,
                               ),
                               Expanded(
-                                child: TextFormField(
-                                  textAlignVertical: TextAlignVertical.center,
+                                // flex: 2,
+                                child: IntlPhoneField(
+                                  showDropdownIcon: false,
+                                  showCursor: false,
+                                  enabled: true,
+                                  flagsButtonMargin: const EdgeInsets.all(10),
+                                  controller: AuthController.phoneController,
+                                  disableLengthCheck: true,
+                                  dropdownIconPosition: IconPosition.trailing,
+                                  invalidNumberMessage: "",
+                                  showCountryFlag: false,
                                   decoration: InputDecoration(
-                                      border: InputBorder.none,
-                                      contentPadding:
-                                      const EdgeInsets.symmetric(
-                                          horizontal: 10),
-                                      hintText: "phone_number_user".tr,
                                       hintStyle: TextStyle(
-                                          fontSize: 17,
-                                          fontWeight: FontWeight.w400,
-                                          color: Colors.grey.shade400)),
-                                  style: const TextStyle(
-                                    fontFamily: "Poppins",
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 15,
-                                  ),
+                                        color: Colors.grey.shade500,
+                                      ),
+                                      hintText: "(90) 123 45 67",
+                                      contentPadding:
+                                          const EdgeInsets.only(top: 15),
+                                      border: InputBorder.none),
+                                  initialCountryCode: 'UZ',
                                 ),
                               ),
                             ],
@@ -256,15 +259,15 @@ class BookingPage extends StatelessWidget {
                         Visibility(
                           visible: _isTest1,
                           child: Container(
-                            padding: const EdgeInsets.only(left: 18, top: 10),
+                            padding: const EdgeInsets.only(bottom: 10),
                             alignment: Alignment.topLeft,
-                            child:TextFormField(
+                            child: TextFormField(
+                              maxLines: 2,
                               textAlignVertical: TextAlignVertical.center,
                               decoration: InputDecoration(
                                   border: InputBorder.none,
                                   contentPadding:
-                                  const EdgeInsets.symmetric(
-                                      horizontal: 5),
+                                      const EdgeInsets.symmetric(horizontal: 5),
                                   hintText: "send_massage_teahouse".tr,
                                   hintStyle: TextStyle(
                                       fontSize: 15,
@@ -289,97 +292,85 @@ class BookingPage extends StatelessWidget {
                     maintainSize: true,
                     maintainAnimation: true,
                     maintainState: true,
-                    child: Container(
-                      padding: const EdgeInsets.only(
-                        left: 55,
-                        right: 55,
+                    child: PinCodeTextField(
+                      appContext: context,
+                      pastedTextStyle: const TextStyle(
+                        color: Colors.green,
+                        fontWeight: FontWeight.bold,
                       ),
-                      height: 100,
-                      // width: 100,
-                      child: PinCodeTextField(
-                        appContext: context,
-                        pastedTextStyle: const TextStyle(
-                          color: Colors.green,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        length: 6,
-                        obscureText: true,
-                        obscuringCharacter: '*',
-                        blinkWhenObscuring: true,
-                        animationType: AnimationType.fade,
-                        validator: (v) {
-                          if (v!.length < 6) {
-                            return "full_fill".tr;
-                          } else {
-                            return null;
-                          }
-                        },
-                        pinTheme: PinTheme(
-                            shape: PinCodeFieldShape.box,
-                            borderWidth: 0,
-                            selectedFillColor: AppColors.mainColor,
-                            borderRadius: BorderRadius.circular(10.12),
-                            fieldHeight: Get.height / 13.57,
-                            fieldWidth: Get.width / 8.26,
-                            activeFillColor: AppColors.activeColor,
-                            inactiveColor: AppColors.activeColor,
-                            inactiveFillColor: AppColors.activeColor),
-                        cursorColor: AppColors.unSelectedTextColor,
-                        animationDuration: const Duration(milliseconds: 300),
-                        enableActiveFill: true,
-                        controller: controller.smsEditingController,
-                        keyboardType: TextInputType.number,
-                        boxShadows: const [
-                          BoxShadow(
-                            offset: Offset(0, 1),
-                            color: Colors.black12,
-                            blurRadius: 10,
-                          )
-                        ],
-                        onCompleted: (v) {},
-                        onChanged: (value) {},
-                        beforeTextPaste: (text) {
-                          //if you return true then it will show the paste confirmation dialog. Otherwise if false, then nothing will happen.
-                          //but you can show anything you want here, like your pop up saying wrong paste format or etc
-                          return true;
-                        },
-                      ),
-                    ),
-                  ),
-
-                  SizedBox(
-
-                    height: 60,
-                    width: MediaQuery.of(context).size.width * 0.87,
-                    child: ElevatedButton(
-                      clipBehavior: Clip.hardEdge,
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(
-                          const Color(0xff17B700),
-                        ),
-                        shape: MaterialStateProperty.all(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                        ),
-                      ),
-                      onPressed: () {
-                        _isTest1=false;
-                        _isTest2 = true;
+                      length: 6,
+                      obscureText: true,
+                      obscuringCharacter: '*',
+                      blinkWhenObscuring: true,
+                      animationType: AnimationType.fade,
+                      validator: (v) {
+                        if (v!.length < 6) {
+                          return "full_fill".tr;
+                        } else {
+                          return null;
+                        }
                       },
-
-                      child: Text(
-                        "str_booking".tr,
-                        style: const TextStyle(
-                          color: Color(0xffffffff),
-                          fontFamily: "Poppins",
-                          fontWeight: FontWeight.w600,
-                          fontSize: 18,
-                        ),
-                      ),
+                      pinTheme: PinTheme(
+                          shape: PinCodeFieldShape.box,
+                          borderWidth: 0,
+                          selectedFillColor: AppColors.mainColor,
+                          borderRadius: BorderRadius.circular(10.12),
+                          fieldHeight: Get.height / 13.57,
+                          fieldWidth: Get.width / 8.26,
+                          activeFillColor: AppColors.activeColor,
+                          inactiveColor: AppColors.activeColor,
+                          inactiveFillColor: AppColors.activeColor),
+                      cursorColor: Colors.white,
+                      animationDuration: const Duration(milliseconds: 300),
+                      enableActiveFill: true,
+                      controller: controller.smsEditingController,
+                      keyboardType: TextInputType.number,
+                      boxShadows: const [
+                        BoxShadow(
+                          offset: Offset(0, 1),
+                          color: Colors.black12,
+                          blurRadius: 10,
+                        )
+                      ],
+                      onCompleted: (v) {},
+                      onChanged: (value) {},
+                      beforeTextPaste: (text) {
+                        return true;
+                      },
                     ),
                   ),
                 ],
+              ),
+            ),
+          ),
+          bottomNavigationBar: Container(
+            height: 60,
+            margin: const EdgeInsets.symmetric(vertical: 60, horizontal: 20),
+            width: MediaQuery.of(context).size.width * 0.87,
+            child: ElevatedButton(
+              clipBehavior: Clip.hardEdge,
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(
+                  const Color(0xff17B700),
+                ),
+                shape: MaterialStateProperty.all(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+              ),
+              onPressed: () {
+                _isTest1 = false;
+                _isTest2 = true;
+              },
+              child: Text(
+                "str_booking".tr,
+                style: const TextStyle(
+                  color: Color(0xffffffff),
+                  fontFamily: "Poppins",
+                  fontWeight: FontWeight.w600,
+                  fontSize: 18,
+                ),
               ),
             ),
           ),
@@ -388,4 +379,3 @@ class BookingPage extends StatelessWidget {
     );
   }
 }
-

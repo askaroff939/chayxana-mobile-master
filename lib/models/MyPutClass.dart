@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:core';
 
 MyPutClass myPutClassFromJson(String str) =>
     MyPutClass.fromJson(json.decode(str));
@@ -53,22 +54,24 @@ class MyPutClass {
     map['totalElements'] = totalElements;
     return map;
   }
-
 }
 
 Object objectFromJson(String str) => Object.fromJson(json.decode(str));
+
 String objectToJson(Object data) => json.encode(data.toJson());
+
 class Object {
   Object({
-      this.id, 
-      this.roomNumber, 
-      this.bron, 
-      this.maxPerson, 
-      this.minPerson, 
-      this.chayxanaId, 
-      this.chayxanaDto, 
-      this.price, 
-      this.roomDetailDTOS,});
+    this.id,
+    this.roomNumber,
+    this.bron,
+    this.maxPerson,
+    this.minPerson,
+    this.chayxanaId,
+    this.chayxanaDto,
+    this.price,
+    this.roomDetailDTOS,
+  });
 
   Object.fromJson(dynamic json) {
     id = json['id'];
@@ -86,6 +89,7 @@ class Object {
       });
     }
   }
+
   String? id;
   int? roomNumber;
   bool? bron;
@@ -93,27 +97,32 @@ class Object {
   int? minPerson;
   String? chayxanaId;
   dynamic chayxanaDto;
-  int? price;
+  double? price;
   List<RoomDetailDtos>? roomDetailDTOS;
-Object copyWith({  String? id,
-  int? roomNumber,
-  bool? bron,
-  int? maxPerson,
-  int? minPerson,
-  String? chayxanaId,
-  dynamic chayxanaDto,
-  int? price,
-  List<RoomDetailDtos>? roomDetailDTOS,
-}) => Object(  id: id ?? this.id,
-  roomNumber: roomNumber ?? this.roomNumber,
-  bron: bron ?? this.bron,
-  maxPerson: maxPerson ?? this.maxPerson,
-  minPerson: minPerson ?? this.minPerson,
-  chayxanaId: chayxanaId ?? this.chayxanaId,
-  chayxanaDto: chayxanaDto ?? this.chayxanaDto,
-  price: price ?? this.price,
-  roomDetailDTOS: roomDetailDTOS ?? this.roomDetailDTOS,
-);
+
+  Object copyWith({
+    String? id,
+    int? roomNumber,
+    bool? bron,
+    int? maxPerson,
+    int? minPerson,
+    String? chayxanaId,
+    dynamic chayxanaDto,
+    double? price,
+    List<RoomDetailDtos>? roomDetailDTOS,
+  }) =>
+      Object(
+        id: id ?? this.id,
+        roomNumber: roomNumber ?? this.roomNumber,
+        bron: bron ?? this.bron,
+        maxPerson: maxPerson ?? this.maxPerson,
+        minPerson: minPerson ?? this.minPerson,
+        chayxanaId: chayxanaId ?? this.chayxanaId,
+        chayxanaDto: chayxanaDto ?? this.chayxanaDto,
+        price: price ?? this.price,
+        roomDetailDTOS: roomDetailDTOS ?? this.roomDetailDTOS,
+      );
+
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['id'] = id;
@@ -129,17 +138,20 @@ Object copyWith({  String? id,
     }
     return map;
   }
-
 }
 
-RoomDetailDtos roomDetailDtosFromJson(String str) => RoomDetailDtos.fromJson(json.decode(str));
+RoomDetailDtos roomDetailDtosFromJson(String str) =>
+    RoomDetailDtos.fromJson(json.decode(str));
+
 String roomDetailDtosToJson(RoomDetailDtos data) => json.encode(data.toJson());
+
 class RoomDetailDtos {
   RoomDetailDtos({
-      this.id, 
-      this.name, 
-      this.iconId, 
-      this.active,});
+    this.id,
+    this.name,
+    this.iconId,
+    this.active,
+  });
 
   RoomDetailDtos.fromJson(dynamic json) {
     id = json['id'];
@@ -147,19 +159,25 @@ class RoomDetailDtos {
     iconId = json['iconId'];
     active = json['active'];
   }
+
   int? id;
   String? name;
   String? iconId;
   bool? active;
-RoomDetailDtos copyWith({  int? id,
-  String? name,
-  String? iconId,
-  bool? active,
-}) => RoomDetailDtos(  id: id ?? this.id,
-  name: name ?? this.name,
-  iconId: iconId ?? this.iconId,
-  active: active ?? this.active,
-);
+
+  RoomDetailDtos copyWith({
+    int? id,
+    String? name,
+    String? iconId,
+    bool? active,
+  }) =>
+      RoomDetailDtos(
+        id: id ?? this.id,
+        name: name ?? this.name,
+        iconId: iconId ?? this.iconId,
+        active: active ?? this.active,
+      );
+
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['id'] = id;
@@ -168,5 +186,4 @@ RoomDetailDtos copyWith({  int? id,
     map['active'] = active;
     return map;
   }
-
 }

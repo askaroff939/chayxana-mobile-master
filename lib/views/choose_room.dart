@@ -8,7 +8,7 @@ class ChooseRoom extends StatelessWidget {
   final bool selected;
   final int maxPeople;
   final int minPeople;
-  final int price;
+  final double price;
   final Function() onTap;
 
   const ChooseRoom(
@@ -45,7 +45,7 @@ class ChooseRoom extends StatelessWidget {
                 text: 'str_people_count'.tr,
                 selected: selected),
             columnWidget(
-                firstItem: price,
+                firstItem: price.toInt(),
                 text: 'str_price'.tr,
                 unit: 'k',
                 selected: selected),
